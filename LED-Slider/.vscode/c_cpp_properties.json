@@ -8,8 +8,11 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "C:/Users/dhrum/OneDrive/Documents/PlatformIO/Projects/LED-Slider/include",
-                "C:/Users/dhrum/OneDrive/Documents/PlatformIO/Projects/LED-Slider/src",
+                "C:/Users/dhrum/OneDrive/Documents/PlatformIO/Projects/ESP32-Wrover/Led-Slider/include",
+                "C:/Users/dhrum/OneDrive/Documents/PlatformIO/Projects/ESP32-Wrover/Led-Slider/src",
+                "C:/Users/dhrum/OneDrive/Documents/PlatformIO/Projects/ESP32-Wrover/Led-Slider/.pio/libdeps/upesy_wrover/Blynk/src",
+                "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
+                "C:/Users/dhrum/OneDrive/Documents/PlatformIO/Projects/ESP32-Wrover/Led-Slider/.pio/libdeps/upesy_wrover/BlynkNcpDriver/src",
                 "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                 "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                 "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -229,7 +232,6 @@
                 "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/USB/src",
                 "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                 "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
-                "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
                 "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
@@ -238,8 +240,11 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "C:/Users/dhrum/OneDrive/Documents/PlatformIO/Projects/LED-Slider/include",
-                    "C:/Users/dhrum/OneDrive/Documents/PlatformIO/Projects/LED-Slider/src",
+                    "C:/Users/dhrum/OneDrive/Documents/PlatformIO/Projects/ESP32-Wrover/Led-Slider/include",
+                    "C:/Users/dhrum/OneDrive/Documents/PlatformIO/Projects/ESP32-Wrover/Led-Slider/src",
+                    "C:/Users/dhrum/OneDrive/Documents/PlatformIO/Projects/ESP32-Wrover/Led-Slider/.pio/libdeps/upesy_wrover/Blynk/src",
+                    "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
+                    "C:/Users/dhrum/OneDrive/Documents/PlatformIO/Projects/ESP32-Wrover/Led-Slider/.pio/libdeps/upesy_wrover/BlynkNcpDriver/src",
                     "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                     "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                     "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -459,7 +464,6 @@
                     "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/USB/src",
                     "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                     "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
-                    "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
                     "C:/Users/dhrum/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
