@@ -15,19 +15,16 @@ char auth[] = "ppqkclS7sdtb0YGk_nVDGX522o_7i4ed";
 const int ledPin = 2;  // Change this to the GPIO pin you've connected your LED to
 
 // Variables for on and off times (in milliseconds)
-unsigned long onTime = 50000; // Default on time is 90 seconds (90,000 ms)
-unsigned long offTime = 4000;  // Default off time is 4 seconds (4,000 ms)
+unsigned long onTime = 5000; // Default on time is 5 seconds (5000 ms)
 
 BlynkTimer timer;
 
 // Variable to track LED state
 bool ledOn = false;
 
-// Variable to control timer execution
-bool timerEnabled = true;
-
 // Function declarations
 void toggleLED();
+BLYNK_WRITE(V1);
 BLYNK_WRITE(V2);
 
 void setup() {
@@ -67,18 +64,27 @@ void toggleLED() {
     digitalWrite(ledPin, HIGH);
     ledOn = true;
   }
-  
-  // Check if the timer should be disabled
-  if (!timerEnabled) {
-    timer.disableAll(); // Disable all timers
+}
+
+BLYNK_WRITE(V1) {
+  // Toggle Button widget on V1 for turning ON the LED
+  if (param.asInt() == 1) {
+    digitalWrite(ledPin, HIGH); // Turn on the LED
+    ledOn = true;
+    timer.setInterval(onTime, toggleLED); // Set the timer for onTime (LED on)
+  } else {
+    // Ensure the LED is turned off
+    digitalWrite(ledPin, LOW);
+    ledOn = false;
+    timer.disableAll(); // Disable all timers to prevent further LED toggling
   }
 }
 
 BLYNK_WRITE(V2) {
-  // Button widget on V2 to turn off the LED instantly
+  // Toggle Button widget on V2 for turning OFF the LED
   if (param.asInt() == 1) {
-    digitalWrite(ledPin, LOW);
+    digitalWrite(ledPin, LOW); // Turn off the LED
     ledOn = false;
-    timerEnabled = false; // Disable the timer execution
+    timer.disableAll(); // Disable all timers to keep the LED off
   }
 }
