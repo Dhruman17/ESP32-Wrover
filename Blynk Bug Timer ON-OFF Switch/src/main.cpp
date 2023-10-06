@@ -7,30 +7,34 @@
 // WiFi credentials
 char ssid[] = "BELL805";
 char pass[] = "4E94D34AC4C6";
-
-// Blynk Auth Token
 char auth[] = "ppqkclS7sdtb0YGk_nVDGX522o_7i4ed";
 
 // LED connected to this GPIO pin
-const int ledPin = 2;  // Change this to the GPIO pin you've connected your LED to
+const int ledPin = 2;  // Change this to match your board's LED pin
 
-// Variables for on and off times (in milliseconds)
-unsigned long onTime = 5000; // Default on time is 5 seconds (5000 ms)
+// Virtual Pin assignments
+int onTimePin = V0;
+int offTimePin = V1;
+int togglePin = V2;
 
-BlynkTimer timer;
+// Flags for circuit control
+bool circuitOn = true;
 
-// Variable to track LED state
-bool ledOn = false;
-
-// Function declarations
-void toggleLED();
-BLYNK_WRITE(V1);
-BLYNK_WRITE(V2);
+BLYNK_WRITE(togglePin) {
+  int buttonState = param.asInt(); // Read the button state (0 or 1)
+  if (buttonState == 1) {
+    // Button is pressed (turned off)
+    circuitOn = false;
+  } else {
+    // Button is released (turned on)
+    circuitOn = true;
+  }
+}
 
 void setup() {
   // Initialize Serial Monitor
   Serial.begin(115200);
-  
+
   // Connect to Wi-Fi
   WiFi.begin(ssid, pass);
   while (WiFi.status() != WL_CONNECTED) {
@@ -44,47 +48,17 @@ void setup() {
 
   // Set the LED pin as an output
   pinMode(ledPin, OUTPUT);
-  digitalWrite(ledPin, LOW); // Ensure the LED is initially off
-
-  // Attach timer function
-  timer.setInterval(onTime, toggleLED);
 }
 
 void loop() {
   // Run Blynk
   Blynk.run();
-  timer.run();
-}
 
-void toggleLED() {
-  if (ledOn) {
-    digitalWrite(ledPin, LOW);
-    ledOn = false;
+  // Implement your logic here to control the circuit based on on-time and off-time
+  if (circuitOn) {
+    // Do something when the circuit is on
   } else {
-    digitalWrite(ledPin, HIGH);
-    ledOn = true;
-  }
-}
-
-BLYNK_WRITE(V1) {
-  // Toggle Button widget on V1 for turning ON the LED
-  if (param.asInt() == 1) {
-    digitalWrite(ledPin, HIGH); // Turn on the LED
-    ledOn = true;
-    timer.setInterval(onTime, toggleLED); // Set the timer for onTime (LED on)
-  } else {
-    // Ensure the LED is turned off
+    // Turn off the circuit completely
     digitalWrite(ledPin, LOW);
-    ledOn = false;
-    timer.disableAll(); // Disable all timers to prevent further LED toggling
-  }
-}
-
-BLYNK_WRITE(V2) {
-  // Toggle Button widget on V2 for turning OFF the LED
-  if (param.asInt() == 1) {
-    digitalWrite(ledPin, LOW); // Turn off the LED
-    ledOn = false;
-    timer.disableAll(); // Disable all timers to keep the LED off
   }
 }
