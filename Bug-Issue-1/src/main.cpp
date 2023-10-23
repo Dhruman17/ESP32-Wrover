@@ -1,22 +1,11 @@
 #define BLYNK_TEMPLATE_ID "TMPL2IBmwwIRN"
 #define BLYNK_TEMPLATE_NAME "Dhruman test"
+#define BLYNK_AUTH_TOKEN "ppqkclS7sdtb0YGk_nVDGX522o_7i4ed"
+
 #include <Arduino.h>
 #include <BlynkSimpleEsp32.h>
-
-// WiFi credentials
-char ssid[] = "BELL805";
-char pass[] = "4E94D34AC4C6";
-char auth[] = "ppqkclS7sdtb0YGk_nVDGX522o_7i4ed";
-
-const int ledPin1 = 15; // GPIO15 for LED 1
-const int ledPin2 = 2;  // GPIO2 for LED 2
-const int ledPin3 = 5;  // GPIO5 for LED 3
-
-#define LED1_VPIN V1
-#define LED2_VPIN V2
-#define LED3_VPIN V3
-#define ON_TIME_SLIDER_VPIN V4
-#define OFF_TIME_SLIDER_VPIN V5
+#include "Config.h" // Include the custom configuration header
+// Blynk settings
 
 bool ledState1 = false;
 bool ledState2 = false;
@@ -30,11 +19,11 @@ bool isOnTime = true;
 
 void setup() {
   Serial.begin(115200);
-  Blynk.begin(auth, ssid, pass);
+  Blynk.begin(BLYNK_AUTH_TOKEN, WIFI_SSID, WIFI_PASS);
 
-  pinMode(ledPin1, OUTPUT);
-  pinMode(ledPin2, OUTPUT);
-  pinMode(ledPin3, OUTPUT);
+  pinMode(LED_PIN_1, OUTPUT);
+  pinMode(LED_PIN_2, OUTPUT);
+  pinMode(LED_PIN_3, OUTPUT);
 }
 
 void loop() {
@@ -62,9 +51,9 @@ void loop() {
     }
   }
 
-  digitalWrite(ledPin1, ledState1 && isOnTime);
-  digitalWrite(ledPin2, ledState2 && isOnTime);
-  digitalWrite(ledPin3, ledState3 && isOnTime);
+  digitalWrite(LED_PIN_1, ledState1 && isOnTime);
+  digitalWrite(LED_PIN_2, ledState2 && isOnTime);
+  digitalWrite(LED_PIN_3, ledState3 && isOnTime);
 }
 
 BLYNK_WRITE(LED1_VPIN) {
