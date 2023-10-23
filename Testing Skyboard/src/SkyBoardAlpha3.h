@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #define numberOfAtomizers 8
 #define atomizerPins {4,5,2,14,15,17,16,19}
 #define vPinAtomizerOnTime V0
