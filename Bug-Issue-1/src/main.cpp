@@ -52,13 +52,12 @@ Blynk.syncVirtual(V1);
   }
   // Update LEDs
 }
-
-BLYNK_WRITE(V1) { ledState[0] = (param.asInt() == 1); }
-BLYNK_WRITE(V2) { ledState[1] = (param.asInt() == 1); }
-BLYNK_WRITE(V3) { ledState[2] = (param.asInt() == 1); }
-BLYNK_WRITE(V6) { ledState[5] = (param.asInt() == 1); }
-BLYNK_WRITE(V7) { ledState[6] = (param.asInt() == 1); }
-BLYNK_WRITE(V8) { ledState[7] = (param.asInt() == 1); }
-
+BLYNK_WRITE_DEFAULT() {
+  int pin = request.pin; // Get the virtual pin number
+  if (pin >= V1 && pin <= V8) {
+    // Handle LED pins V1 to V8
+    ledState[pin - V1] = (param.asInt() == 1);
+  }
+}
 BLYNK_WRITE(V4) { onTime = param.asInt(); }
 BLYNK_WRITE(V5) { offTime = param.asInt(); }
