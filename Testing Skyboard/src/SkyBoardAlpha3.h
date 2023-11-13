@@ -9,7 +9,7 @@ const int LED_PINS[] = {15, 2, 5, 4, 14, 17, 16, 19};
 const int LED_VPINS[] = {V1, V2, V3, V6, V7, V8, V9, V10};
 const int ON_TIME_SLIDER_VPIN = V4;
 const int OFF_TIME_SLIDER_VPIN = V5;
-// LEDC PWM Configuration
+// LEDC PWM Configuration   
 #define PWM_FREQUENCY 108000
 #define PWM_RESOLUTION 4
 #define PWM_MAX_DUTY_CYCLE 15
@@ -18,6 +18,8 @@ const int OFF_TIME_SLIDER_VPIN = V5;
 const int FLOAT_SENSOR_PINS[] = {23, 25, 26, 27, 32, 33, 34, 35, 36, 39};
 const int FLOAT_SENSOR_VPINS_START = V12;
 const int FLOAT_SENSOR_VPINS[] = {V12, V13, V14, V15, V16, V17, V18, V19, V20, V21};
+
+const int TEMP_SWITCH_VPIN = V22;
 #endif // CONFIG_H
 //The above configuration are as per Dhruman's Board.
 // IMP!!! Please set number of atomizers, sensors, atomizer pins, sensor pins, and vPinAtomizers,VPinSwitches according to use case
