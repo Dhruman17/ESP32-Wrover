@@ -5,15 +5,21 @@
 #include <BlynkSimpleEsp32.h>
 #include <driver/ledc.h>
 #include "SkyBoardAlpha3.h"
+#include <DHT.h>
+
+DHT dht(21, DHT11); // Use IO21 (SDA) for the temperature sensor
+
 bool ledState[8] = {false, false, false, false, false, false, false, false};
 int atomizerOnTime = 0;
 int atomizerOffTime = 0;
 unsigned long prevTime = 0;
 bool isOnTime = true;
 int floatSensorStates[NUM_FLOAT_SWITCHES] = {0};
+
 void setup() {
   Serial.begin(115200);
   Blynk.begin(BLYNK_AUTH_TOKEN, WIFI_SSID, WIFI_PASS);
+  
   // delay(1500);
   // This delay gives the chance to wait for a Serial Monitor without blocking if none is found
   //You can also specify server:
@@ -56,6 +62,16 @@ void loop() {
       ledcWrite(i, 0);
     }
   }
+ float temp = dht.getTemperature();
+  float humidity = dht.getHumidity();
+  Serial.print("Temp: ");
+  Serial.print(temp);
+  Serial.println("°C");
+  Serial.print("Humidity: ");
+  Serial.print(humidity);
+  Serial.println("%");
+
+  delay(2000);
   // You can inject your own code or combine it with other sketches.
   // Check other examples on how to communicate with Blynk. Remember
   // to avoid delay() function!
