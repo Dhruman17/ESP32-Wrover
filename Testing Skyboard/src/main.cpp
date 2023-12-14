@@ -67,7 +67,7 @@ void loop() {
   for (int i = 0; i < numberOfAtomizers; i++) {
     if (isOnTime) {
       if (atomizerState[i]) {
-        ledcWrite(i, PWM_MAX_DUTY_CYCLE);
+        ledcWrite(i,3 * PWM_MAX_DUTY_CYCLE/5);
       } else {
         ledcWrite(i, 0);
       }
